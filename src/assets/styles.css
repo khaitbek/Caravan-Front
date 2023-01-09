@@ -1,0 +1,28 @@
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+button, input, textarea{
+    font-family: inherit;
+}
+
+img{
+    display: block;
+    height: auto;
+}
+
+.site-main{
+    flex-grow: 1;
+}
