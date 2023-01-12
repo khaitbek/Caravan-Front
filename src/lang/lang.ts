@@ -1,5 +1,6 @@
 export const lang = {
     uz:{
+        choose_lang: "Til",
         home_page_link:"Bosh sahifa",
         admin_page_link: "Admin sahifa",
         login:"Tizimga kirish",
@@ -22,6 +23,7 @@ export const lang = {
         address:"Manzil",
     },
     en:{
+        choose_lang: "language",
         home_page_link: "Home Page",
         admin_page_link: "Admin Page",
         login: "Login",
@@ -44,6 +46,7 @@ export const lang = {
         address: "address",
     },
     ru:{
+        choose_lang:"язык",
         home_page_link: "Главная страница",
         admin_page_link: "Страница администратора",
         login: "Авторизоваться",
@@ -66,6 +69,7 @@ export const lang = {
         address: "адрес",
     },
     kr:{
+        choose_lang: "Тил",
         home_page_link: "Бош саҳифа",
         admin_page_link: "Админ саҳифа",
         login: "Тизимга кириш",

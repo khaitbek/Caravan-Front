@@ -16,6 +16,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import "../../lang/i18n";
+import { LanguageSelect } from "../LanguageSelect/LanguageSelect";
 const drawerWidth = 240;
 
 export default function Sidebar({ children }: { children: ReactNode }) {
@@ -37,6 +38,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                             {t("home_page_link")}
                         </Link>
                     </Typography>
+                    <LanguageSelect />
                     <Button onClick={handleLogout} sx={{ marginLeft: "1rem" }} color="error" variant="contained">
                         {t("logout")}
                     </Button>
@@ -52,7 +54,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 }}
             >
                 <Toolbar />
-                <Box sx={{ overflow: 'auto' }}>
+                <Box sx={{ overflow: 'auto', paddingTop:"1.5rem" }}>
                     <List>
                         {[t("trucks"), t("orders")].map((text, index) => (
                             <ListItem key={text} disablePadding>
