@@ -3,9 +3,10 @@ import { Container } from "@mui/system"
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from 'zod'
-import {Link} from "@mui/material";
+import { Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
-
+import "../lang/i18n";
+import { useTranslation } from "react-i18next";
 
 type InputTypes = {
     email: string,
@@ -21,18 +22,19 @@ function Login() {
         mode: "all",
         resolver: zodResolver(loginSchema)
     });
+    const { t } = useTranslation()
     const handleLogin: SubmitHandler<InputTypes> = data => console.log(data);
     return (
         <section className="login-section">
             <Container>
                 <form className="login-form" autoComplete="off" onSubmit={handleSubmit(handleLogin)} action="#">
-                    <Stack sx={{ paddingBlock: "3rem", maxWidth:"450px", marginInline:"auto"}} spacing={4}>
-                        <Typography variant="h2" textAlign={"center"}>Login</Typography>
+                    <Stack sx={{ paddingBlock: "3rem", maxWidth: "450px", marginInline: "auto" }} spacing={4}>
+                        <Typography variant="h2" textAlign={"center"}>{t("login")}</Typography>
                         <TextField {...register("email")} helperText={errors.email?.message} type="email" />
                         <TextField {...register("password")} helperText={errors.password?.message} type="password" />
-                        <Button variant="contained" disabled={!isValid} size="large" sx={{alignSelf:"center"}} type="submit">Login</Button>
+                        <Button variant="contained" disabled={!isValid} size="large" sx={{ alignSelf: "center" }} type="submit">{t("login")}</Button>
                         <Typography variant="body1" textAlign={"center"}>
-                            Already have an account? <Link to="/register" underline="hover" component={RouterLink}>Sign up</Link>
+                            {t("already_has_account")} <Link to="/register" underline="hover" component={RouterLink}>{t("register")}</Link>
                         </Typography>
                     </Stack>
                 </form>

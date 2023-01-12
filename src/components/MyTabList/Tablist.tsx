@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 import { SyntheticEvent, useState } from "react";
 import { Link } from "@mui/material";
 import { Outlet, Link as RouterLink } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
+import "../../lang/i18n";
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -41,6 +42,7 @@ function a11yProps(index: number) {
 
 export default function MyTabList() {
     const [value, setValue] = useState(0);
+    const { t } = useTranslation();
 
     const handleChange = (event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -50,8 +52,8 @@ export default function MyTabList() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="click on the tabs to see all the orders and all the available trucks">
-                    <Tab to="/" component={RouterLink} label="Orders" {...a11yProps(0)} />
-                    <Tab to="/trucks" component={RouterLink} label="Trucks" {...a11yProps(1)} />
+                    <Tab to="/" component={RouterLink} label={t("orders")} {...a11yProps(0)} />
+                    <Tab to="/trucks" component={RouterLink} label={t("trucks")} {...a11yProps(1)} />
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>

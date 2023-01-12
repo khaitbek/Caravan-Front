@@ -5,6 +5,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from 'zod'
 import { Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import "../lang/i18n";
 
 
 type InputTypes = {
@@ -18,12 +20,13 @@ type InputTypes = {
 }
 
 function Register() {
+    const {t} = useTranslation();
     const registerSchema = zod.object({
-        Email: zod.string().email(),
-        Password: zod.string().min(8, "Your password should contain at least 8 characters"),
-        FirstName:zod.string().min(2, "Your first name must have at least 2 characters"),
-        LastName: zod.string().min(2, "Your last name must have at least 2 characters"),
-        PhoneNumber: zod.string().length(12,"Invalid phone number"),
+        Email: zod.string().email(`${t("invalid_email")}`),
+        Password: zod.string().min(8, `${t("invalid_password")}`),
+        FirstName: zod.string().min(2, `${t("invalid_f_name")}`),
+        LastName: zod.string().min(2, `${t("invalid_l_name")}`),
+        PhoneNumber: zod.string().length(12, `${t("invalid_phone")}`),
         Address: zod.string().optional(),
     });
     const { register, formState: { errors, isValid }, handleSubmit } = useForm<InputTypes>({
@@ -36,16 +39,16 @@ function Register() {
             <Container>
                 <form className="register-form" autoComplete="off" onSubmit={handleSubmit(handleRegister)} action="#">
                     <Stack sx={{ paddingBlock: "3rem", maxWidth: "450px", marginInline: "auto" }} spacing={4}>
-                        <Typography variant="h2" textAlign={"center"}>Register</Typography>
+                        <Typography variant="h2" textAlign={"center"}>{t("register")}</Typography>
                         <TextField {...register("FirstName")} helperText={errors.FirstName?.message} type="text" />
                         <TextField {...register("LastName")} helperText={errors.LastName?.message} type="text" />
                         <TextField {...register("Address")} helperText={errors.Address?.message} type="adress" />
                         <TextField {...register("PhoneNumber")} helperText={errors.PhoneNumber?.message} type="number" />
                         <TextField {...register("Email")} helperText={errors.Email?.message} type="email" />
                         <TextField {...register("Password")} helperText={errors.Password?.message} type="password" />
-                        <Button variant="contained" disabled={!isValid} size="large" sx={{ alignSelf: "center" }} type="submit">Register</Button>
+                        <Button variant="contained" disabled={!isValid} size="large" sx={{ alignSelf: "center" }} type="submit">{t("register")}</Button>
                         <Typography variant="body1" textAlign={"center"}>
-                            Don't have an account? <Link to="/login" underline="hover" component={RouterLink}>Log in</Link>
+                            {t("no_account")}<Link to="/login" underline="hover" component={RouterLink}>{t("login")}</Link>
                         </Typography>
                     </Stack>
                 </form>

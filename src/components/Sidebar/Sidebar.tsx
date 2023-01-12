@@ -14,10 +14,13 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import { Button, Link } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+import "../../lang/i18n";
 const drawerWidth = 240;
 
 export default function Sidebar({ children }: { children: ReactNode }) {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     function handleLogout(){
         navigate("/");
     }
@@ -27,15 +30,15 @@ export default function Sidebar({ children }: { children: ReactNode }) {
             <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Toolbar>
                     <Typography variant="h6" noWrap component="div">
-                        Admin Page
+                        {t("admin_page_link")}
                     </Typography>
                     <Typography sx={{ marginLeft: "auto" }} variant="h6" noWrap component="div">
                         <Link to="/" underline="hover" color="inherit" component={RouterLink}>
-                            Home
+                            {t("home_page_link")}
                         </Link>
                     </Typography>
                     <Button onClick={handleLogout} sx={{ marginLeft: "1rem" }} color="error" variant="contained">
-                        Log out
+                        {t("logout")}
                     </Button>
                     
                 </Toolbar>
@@ -51,7 +54,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 <Toolbar />
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
-                        {["Trucks", "Orders"].map((text, index) => (
+                        {[t("trucks"), t("orders")].map((text, index) => (
                             <ListItem key={text} disablePadding>
                                 <ListItemButton>
                                     <ListItemIcon>
