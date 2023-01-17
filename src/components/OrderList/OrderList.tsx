@@ -1,12 +1,10 @@
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Grid, Typography } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Grid, Stack, TextField, Typography } from "@mui/material";
 import MyCard from "../MyCard/MyCard";
+import { useContext, useState } from "react";
+import { OrderContext } from "../../context/OrderProvider";
+import { useForm } from "react-hook-form";
+import axios from "axios";
+import { BASE_URL } from "../../API/api";
 
 function createData(
     name: string,
@@ -14,56 +12,53 @@ function createData(
     isEmpty: boolean,
     Description: string,
     TruckNumber: number,
-    Lat:number,
-    Long:number,
-    LocationId:number
+    Lat: number,
+    Long: number,
+    LocationId: number
 ) {
     return { name, TruckNumber, Description, Lat, Long, LocationId };
 }
 
-const rows = [
-    createData("Order name", 100, true, "Order description", 1, 12,15, 5),
-    createData("Order name", 200, false, "Order description", 1, 65, 15, 45),
-    createData("Order name", 15, true, "Order description", 1, 23, 87, 4),
-    createData("Order name", 57, false, "Order description", 1, 12, 45, 98)
-];
-
 export function AdminOrderList() {
+    const { orders } = useContext(OrderContext);
+    const [open, setOpen] = useState(false);
+    const { register, formState: { errors, isValid }, handleSubmit } = useForm();
+    const handleClickOpen = () => {
+        setOpen(prev => !prev);
+    };
+    async function handleFormSubmit(data: object) {
+        const truckData = await fetch(`${BASE_URL}/trucks`,{
+            method:"POST",
+            headers:{
+                "Authorization":``
+            }
+        }) 
+    }
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="center">Name</TableCell>
-                        <TableCell align="center">Truck Number&nbsp;(g)</TableCell>
-                        <TableCell align="center">Description&nbsp;(g)</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((order) => (
-                        <TableRow
-                            key={order.name}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell align="center">{order.name}</TableCell>
-                            <TableCell align="center">{order.TruckNumber}</TableCell>
-                            <TableCell align="center">{order.Description}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>
+            <Grid container justifyContent={"center"} marginBottom={5} spacing={2}>
+                {orders.map(order => {
+                    return <Grid key={order.id} item>
+                        <MyCard title={order.name} order={order} isAdmin={true} >
+                            <Typography variant="body2" color="text.secondary">
+                            </Typography>
+                        </MyCard>
+                    </Grid>
+                })}
+            </Grid>
+            
+        </>
     );
 }
 
-export function DefaultOrderList(){
+export function DefaultOrderList() {
+    const { orders } = useContext(OrderContext);
     return <Grid container justifyContent={"center"} spacing={2}>
-        {rows.map(order => {
-            
-            return <Grid xs={3} item>
-                <MyCard title={order.name}>
+        {orders.map(order => {
+            return <Grid key={order.id} xs={12} md={4} xl={3} item>
+                <MyCard title={order.name} order={order} isAdmin={false}>
                     <Typography variant="body2" color="text.secondary">
-                        {order.Description}
+                        {JSON.stringify(order)}
                     </Typography>
                 </MyCard>
             </Grid>

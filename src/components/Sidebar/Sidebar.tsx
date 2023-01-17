@@ -13,37 +13,29 @@ import FireTruckIcon from '@mui/icons-material/FireTruck';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { Button, Link } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "../../lang/i18n";
 import { LanguageSelect } from "../LanguageSelect/LanguageSelect";
-const drawerWidth = 240;
+import {AdminHeader, Header} from "../Header/Header";
+const drawerWidth = 120;
 
-export default function Sidebar({ children }: { children: ReactNode }) {
+export default function Sidebar({ children, window }: { children: ReactNode, window?:()=>Window }) {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
     function handleLogout(){
         navigate("/");
     }
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-                <Toolbar>
-                    <Typography variant="h6" noWrap component="div">
-                        {t("admin_page_link")}
-                    </Typography>
-                    <Typography sx={{ marginLeft: "auto" }} variant="h6" noWrap component="div">
-                        <Link to="/" underline="hover" color="inherit" component={RouterLink}>
-                            {t("home_page_link")}
-                        </Link>
-                    </Typography>
-                    <LanguageSelect />
-                    <Button onClick={handleLogout} sx={{ marginLeft: "1rem" }} color="error" variant="contained">
-                        {t("logout")}
-                    </Button>
-                    
-                </Toolbar>
+            <AppBar sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+                <AdminHeader/>
             </AppBar>
             <Drawer
                 variant="permanent"
@@ -59,9 +51,7 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                         {[t("trucks"), t("orders")].map((text, index) => (
                             <ListItem key={text} disablePadding>
                                 <ListItemButton>
-                                    <ListItemIcon>
-                                        {index % 2 === 0 ? <FireTruckIcon /> : <ListAltIcon />}
-                                    </ListItemIcon>
+                                    
                                     <Link to={index % 2 === 0 ? "trucks" : "orders"} underline="hover" color="GrayText" component={RouterLink}>
                                         {text}
                                     </Link>

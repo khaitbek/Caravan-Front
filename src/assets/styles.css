@@ -26,3 +26,10 @@ img{
 .site-main{
     flex-grow: 1;
 }
+
+.order-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+    gap: 1rem;
+    padding: 1rem;
+}
