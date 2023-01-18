@@ -48,7 +48,7 @@ export default function MyCard({ children, title, order, isAdmin = false }: { ch
         }
     }
     return (
-        <Card sx={{ boxShadow: "0 0 2px 2px rgba(0,0,0,0.4)" }}>
+        <Card sx={{ boxShadow: "0 0 2px 2px rgba(0,0,0,0.4)", background:"#c6c2c2" }}>
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">

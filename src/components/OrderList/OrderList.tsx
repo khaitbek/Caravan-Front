@@ -110,10 +110,20 @@ export function DefaultOrderList() {
 
         <Grid container justifyContent={"center"} spacing={2}>
             {orders.map(order => {
+                console.log(order);
                 return <Grid key={order.id} xs={12} md={4} xl={3} item>
                     <MyCard title={order.name} order={order} isAdmin={false}>
                         <Typography variant="body2" color="text.secondary">
-                            {JSON.stringify(order)}
+                            Weight: {order.weight}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Size: {order.size}
+                        </Typography>
+                        <Typography variant="body2" gutterBottom color="text.secondary">
+                            Price: {order.price}
+                        </Typography>
+                        <Typography variant="body1" color="text.primary">
+                            {order.user.firstName} {order.user.lastName}
                         </Typography>
                     </MyCard>
                 </Grid>

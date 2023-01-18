@@ -210,17 +210,29 @@ export function DefaultTruckList() {
                                     <MoreVertIcon />
                                 </IconButton>
                             }
-                            title={JSON.stringify(truck)}
+                            title={truck.name}
                         />
                         <CardMedia
                             component="img"
                             width={200}
                             height="194"
-                            image={"https://via.placeholder.com/200"}
+                            image={"http://e-karvon.uz/" + truck.imagePath}
                             alt="Paella dish"
                         />
                         <CardContent>
+                            <Typography variant="body2" color="text.secondary">
+                                {truck.description}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                {truck.user.phoneNumber}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                
+                            </Typography>
 
+                            <Typography variant="body1" color="text.primary">
+                                {truck.user.firstName} {truck.user.lastName}
+                            </Typography>
                         </CardContent>
 
                     </Card>
