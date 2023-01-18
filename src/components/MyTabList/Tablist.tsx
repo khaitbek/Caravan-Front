@@ -51,10 +51,7 @@ export default function MyTabList() {
     return (
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="click on the tabs to see all the orders and all the available trucks">
-                    <Tab to="/" component={RouterLink} label={t("orders")} {...a11yProps(0)} />
-                    <Tab to="/trucks" component={RouterLink} label={t("trucks")} {...a11yProps(1)} />
-                </Tabs>
+                
             </Box>
             <TabPanel value={value} index={0}>
                 <Outlet />

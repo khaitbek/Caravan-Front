@@ -12,7 +12,7 @@ type AuthContextProps = {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-    const [token, setToken] = useState(JSON.parse(localStorage.getItem("token")!) || "");
+    const [token, setToken] = useState(localStorage.getItem("token")! || "");
 
     return <AuthContext.Provider value={{ token, setToken }}>
         {children}

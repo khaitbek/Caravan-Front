@@ -66,7 +66,7 @@ export default function MyCard({ children, title, order, isAdmin = false }: { ch
                 component="img"
                 width={200}
                 height="194"
-                image={"https://via.placeholder.com/200"}
+                image={"http://e-karvon.uz/" + order.imagePath}
                 alt="Paella dish"
             />
             <CardContent>

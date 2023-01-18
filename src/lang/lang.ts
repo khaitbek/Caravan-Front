@@ -2,6 +2,7 @@ export const lang = {
     uz:{
         choose_lang: "Til",
         home_page_link:"Bosh sahifa",
+        forgot_password:"Parolni unutdingizmi?",
         about_page_link: "Biz haqimizda",
         contact_page_link: "Bog'lanish",
         admin_page_link: "Admin sahifa",
@@ -23,10 +24,17 @@ export const lang = {
         f_name:"Ism",
         l_name: "Familiya",
         address:"Manzil",
+        settings:"Sozlamalar",
+        old_password:"Eski parolni kiriting",
+        new_password:"Yangi parolni kiriting",
+        verify_password:"Yangi parolni qayta kiriting",
+        submit:"Tasdiqlash",
+        profile:"Profil"
     },
     en:{
         choose_lang: "language",
         home_page_link: "Home Page",
+        forgot_password: "Forgot password",
         about_page_link: "About",
         contact_page_link: "Contact",
         admin_page_link: "Admin Page",
@@ -48,11 +56,19 @@ export const lang = {
         f_name: "First name",
         l_name: "Last name",
         address: "address",
+        settings:"Settings",
+        old_password: "Enter your old password",
+        new_password: "Enter your new password",
+        verify_password: "Verify your new password",
+        submit: "Submit",
+        profile:"Profile",
+
     },
     ru:{
         choose_lang:"язык",
         home_page_link: "Главная страница",
         admin_page_link: "Страница администратора",
+        forgot_password: "Забыли пароль ?",
         about_page_link: "О нас",
         contact_page_link: "Свяжитесь с нами",
         login: "Авторизоваться",
@@ -73,10 +89,17 @@ export const lang = {
         f_name: "Имя",
         l_name: "Фамилия",
         address: "адрес",
+        settings: "Hастройки",
+        old_password: "Введите старый пароль",
+        new_password: "Введите новый пароль",
+        verify_password: "Повторно введите новый пароль",
+        profile: "Профиль"
+
     },
     kr:{
         choose_lang: "Тил",
         home_page_link: "Бош саҳифа",
+        forgot_password:"Паролни унутдингизми?",
         admin_page_link: "Админ саҳифа",
         about_page_link: "Биз ҳақимизда",
         contact_page_link: "Боғланиш",
@@ -98,5 +121,12 @@ export const lang = {
         f_name: "Исм",
         l_name: "Фамилия",
         address: "Манзил",
+        settings:"Cозламалар",
+        old_password: "Эски парольни киритинг",
+        new_password: "Янги парольни киритинг",
+        verify_password: "Янги парольни қайта киритинг",
+        submit:"Tasdiqlash",
+        profile: "Профиль"
+
     }
 }

@@ -52,7 +52,7 @@ export default function Sidebar({ children, window }: { children: ReactNode, win
                             <ListItem key={text} disablePadding>
                                 <ListItemButton>
                                     
-                                    <Link to={index % 2 === 0 ? "trucks" : "orders"} underline="hover" color="GrayText" component={RouterLink}>
+                                    <Link to={index === 0 ? "trucks" : index === 1 ? "orders" : "settings"} underline="hover" color="GrayText" component={RouterLink}>
                                         {text}
                                     </Link>
                                 </ListItemButton>

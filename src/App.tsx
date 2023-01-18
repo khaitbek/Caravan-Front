@@ -9,6 +9,10 @@ import {AdminTruckList, DefaultTruckList} from "./components/TruckList/TruckList
 import 'react-toastify/dist/ReactToastify.css';
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthProvider";
+import ForgotPassword from "./pages/ForgotPassword";
+import Settings from "./pages/Settings";
+import NotFound from "./pages/404";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -26,7 +30,14 @@ function App() {
         <Route path="/admin" element={token ? <Admin /> : <Navigate replace={true} to="/login" />}>
           <Route path="trucks" element={<AdminTruckList />} />
           <Route path="orders" element={<AdminOrderList />} />
+          <Route path="profile" element={<Profile />}>
+            <Route path="settings" element={<Settings />} />
+            <Route path="trucks" element={<AdminTruckList />} />
+            <Route path="orders" element={<AdminOrderList />} />
+          </Route>
         </Route>
+        <Route path="password/reset" element={<ForgotPassword />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
     </div>

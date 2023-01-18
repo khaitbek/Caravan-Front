@@ -37,7 +37,7 @@ function Login() {
                 newFormData.append(`${item[0]}`, item[1]);
             })
             const loginData = await loginUser(newFormData);
-            localStorage.setItem("token", JSON.stringify(loginData.data.token));
+            localStorage.setItem("token", loginData.data.token);
             setToken(loginData.data.token);
             navigate("/");
         } catch (error: any) {
@@ -56,6 +56,9 @@ function Login() {
                         </Button>
                         <Typography variant="body1" textAlign={"center"}>
                             {t("already_has_account")} <Link to="/register" underline="hover" component={RouterLink}>{t("register")}</Link>
+                        </Typography>
+                        <Typography variant="body1" textAlign={"center"}>
+                            <Link to="/password/reset" underline="hover" component={RouterLink}>{t("forgot_password")}</Link>
                         </Typography>
                     </Stack>
                 </form>
